@@ -25,8 +25,15 @@ class XWeather extends LitElement {
 	}
 
 	async getWeather(city) {
+		console.log("Trying to fetch from: " + `${this.endpoint}?city=${city}`);
+
 		const weather = await fetch(`${this.endpoint}?city=${city}`).then(res => res.json());
 		this.weather = weather?.weather[0];
+
+		const testVal = await fetch()
+
+
+		console.log("This is the weather for " + this.city + ": " + this.weather);
 	}
 	static get styles() {
 		return css`
@@ -52,8 +59,16 @@ class XWeather extends LitElement {
 		`;
 	}
 	render() {
+		if(this.weather == null){
+			console.log("Weather is null");
+		}else{
+			console.log(this.weather);
+		}
+
 		return html`
 			<p>
+				
+
 				Current weather in ${this.city}: <span class="${this.weather.description}">${this.weather.description}</span>,
 			<br>
 			Do you want to book a trip to ${this.city}?

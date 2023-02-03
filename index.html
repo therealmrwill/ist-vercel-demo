@@ -26,49 +26,16 @@
 </head>
 
 <body>
-  <x-weather city="pittsburgh"></x-weather>
-  <x-weather city="boston"></x-weather>
-  <x-weather city="portland"></x-weather>
+  <script type="module" src="./src/BtnContainer.js"></script>
+  <script type="module" src="./src/TestBtn.js"></script>
 
-  <textarea id="response" rows="50" cols="50"></textarea>
-  <button id="refresh">Click to refresh</button>
-  <button id="user">Add user</button>
-  <script>
-    function updateData() {
-      console.log("here");
-      fetch("/api/db").then(res => res.json()).then((data) => {
-        document.querySelector("#response").value = JSON.stringify(data, null, 2);
-      });
-    }
-    // update response
-    document.querySelector("#refresh").addEventListener("click", (e) => {updateData();});
-    // add user response
-    document.querySelector("#user").addEventListener("click", (e) => {
-      const user = {
-        name: Math.random().toString(8).slice(2),
-        email: `${Math.random().toString(10).slice(2)}@${Math.random().toString(6).slice(2)}.com`,
-        password: Math.random().toString(16).slice(2),
-      };
-      console.log(user);
-      var queryString = Object.keys(user).map(key => key + '=' + user[key]).join('&');
-      fetch(`/api/addUser?${queryString}`).then(res => res.json()).then((data) => {
-        // update the data bc we just got a result that we added a user
-        updateData();
-      });
-    });
-  </script>
 
-  <lrnsys-comment-list></lrnsys-comment-list>
+  <btn-container
+    num-horizontal = 3
+  >
+  </btn-container>
 
-  <script type="module" src="./src/x-weather.js"></script>
-  <script type="module" defer async>
-    // comment list
-    await import("@lrnwebcomponents/lrnsys-comment/lib/lrnsys-comment-list.js").then(() => {
-      fetch(`/api/comments?op=GET`).then(res => res.json()).then((comments) => 
-      {
-        document.querySelector("lrnsys-comment-list").comments = comments;
-      });
-    });
-  </script>
+
+  
 </body>
 </html>
