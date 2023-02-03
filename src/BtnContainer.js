@@ -32,7 +32,7 @@ class BtnContainer extends LitElement {
   }
 
   async updateValues(){
-    const data = await fetch("src/JSON/test.json").then(res => res.json());
+    const data = await fetch("api/cardData").then(res => res.json());
     this.cardData = data;
   }
 
