@@ -1,4 +1,6 @@
 import {LitElement, html} from 'lit';
+import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 class BtnContainer extends LitElement {
 
@@ -71,14 +73,25 @@ class BtnContainer extends LitElement {
 
           ${horizontal.map(item => html`
 
-            <test-btn 
-              sideOneData="${item['side-one']}"
-              sideTwoData="${item['side-two']}"
-              height= "${item.height}"
-              width="${item.width}"
-              color1="${item['color-1']}"
-              color2="${item['color-2']}"
-            ></test-btn>
+            <div
+              style="padding: 48px;"
+            >
+
+              <accent-card 
+                image-align = 'left'
+                accent-color="${item['color-2']}"
+                dark
+                accent-background
+                style="min-width: ${item.width}px; min-height='${item.height}px';"
+                >
+                <h1 slot="heading"> ${item['side-one']}</h1>
+                <p slot="content">${item['side-two']}</p>
+
+              </accent-card>
+
+            </div>
+
+            
 
           `)} 
           

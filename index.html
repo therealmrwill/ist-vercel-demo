@@ -8,6 +8,12 @@
   <meta name="Description" content="IST Vercel app example">
   <title>Vercel example</title>
 
+  <!-- Should allow usage of elements -->
+  <script>
+    window.__appCDN = "https://cdn.webcomponents.psu.edu/cdn/";
+  </script>
+  <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>
+
   <base href="/">
 
   <style>
@@ -29,11 +35,18 @@
   <script type="module" src="./src/BtnContainer.js"></script>
   <script type="module" src="./src/TestBtn.js"></script>
 
-
   <btn-container
-    num-horizontal = 3
+    num-horizontal = 2
+  ></btn-container>
+
+  
+  
+
+
+  <!-- <btn-container
+    num-horizontal = 5
   >
-  </btn-container>
+  </btn-container> -->
 
 
   
